@@ -1,0 +1,21 @@
+import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+# Sample documents
+documents = [
+    "This is the first document.",
+    "This document is the second document.",
+    "And the third one.",
+    "Is this the first document?"
+]
+
+# Create a TF-IDF vectorizer
+vectorizer = TfidfVectorizer()
+
+# Fit and transform the documents
+X = vectorizer.fit_transform(documents)
+
+# Convert the result to a DataFrame
+df = pd.DataFrame(X.toarray(), columns=vectorizer.get_feature_names_out())
+
+print(df)

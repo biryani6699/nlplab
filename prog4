@@ -1,0 +1,88 @@
+!pip install gensim
+
+
+****************************
+
+import gensim
+from gensim.models import Word2Vec
+from nltk.tokenize import word_tokenize
+import nltk
+
+# Download NLTK resources
+nltk.download('punkt')
+
+# Sample text data
+sentences = ["This is a sample sentence", "Word embeddings are useful"]
+
+# Tokenize sentences
+tokenized_sentences = [word_tokenize(sentence) for sentence in sentences]
+
+# Train Word2Vec model
+model = Word2Vec(tokenized_sentences, vector_size=100, window=5, min_count=1, workers=4)
+
+
+******************************
+
+
+# Get the vector for a word
+vector = model.wv['sample']
+print(vector)
+
+
+****************************
+
+from gensim.models import KeyedVectors
+
+# Path to your GloVe file
+glove_input_file = 'glove.6B.100d.txt'
+
+# Load the GloVe vectors directly
+model = KeyedVectors.load_word2vec_format(glove_input_file, binary=False, no_header=True)
+
+# Use the model
+vector = model['sample']
+print(vector)
+
+
+
+*******************************
+
+
+# Get the vector for a word
+vector = model['sample']
+print(vector)
+
+
+***********************************
+
+!pip install fasttext
+
+
+************************************
+
+import fasttext
+
+# Sample text data
+with open('text_data.txt', 'w') as f:
+    f.write("This is a sample sentence\n")
+    f.write("Word embeddings are useful\n")
+
+# Train fastText model
+model = fasttext.train_unsupervised('text.txt', model='skipgram')
+
+
+*************************************
+
+# Get the vector for a word
+vector = model.get_word_vector('sample')
+print(vector)
+
+
+*************************************
+
+
+
+
+
+
+

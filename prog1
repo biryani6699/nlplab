@@ -1,29 +1,21 @@
-import nltk
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
+import nltk from nltk.corpus 
+import stopwords from nltk.tokenize 
+import word_tokenize
 
-try:
-    nltk.download('punkt_tab')
-    nltk.download('stopwords')
-    nltk.download('tagsets_json')
-    nltk.download('averaged_perceptron_tagger_eng')
+# Download required NLTK resources
 
-    text = "This is a sample sentence for part of speech tagging. We will remove stop words and tag the remaining words."
+nltk.download('punkt_tab') 
+nltk.download('averaged_perceptron_tagger_eng') 
+nltk.download('stopwords')
 
-    words = word_tokenize(text)
-    stop_words = set(stopwords.words('english'))
-    filtered_words = [word for word in words if word not in stop_words]
 
-    tagged_words = nltk.pos_tag(filtered_words)
+# Sample text
+text = "Natural Language Processing is a fascinating field of AI."
 
-    print("Word\t\tTag\t\tDescription")
-    print("----\t\t----\t\t----------")
-    for word, tag in tagged_words:
-        print(f"{word}\t\t{tag}\t\t{nltk.help.upenn_tagset(tag)}")
 
-except LookupError as e:
-    print("Error:", e)
-    print("Please download the required NLTK data using the following command:")
-    print("nltk.download('punkt')")
-    print("nltk.download('stopwords')")
-    print("nltk.download('averaged_perceptron_tagger')")
+# Tokenize the text tokens word_tokenize (text)
+
+stop_words = set(stopwords.words('english'))          # Get stop words
+stop_word_tokens [word for word in tokens if word.lower() in stop_words]          # Filter tokens to include only stop words
+pos_tags = nltk.pos_tag(stop_word_tokens)         # Perform POS tagging
+print("POS Tags of Stop Words:", pos_tags)

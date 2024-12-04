@@ -15,6 +15,6 @@ counts = Counter(n_grams)
 
 for ngram, count in counts.items():
     prefix = ngram[:-1] 
-    total_prefix_count = sum(c for ng, c in counts.items() if ng[:-1] = prefix) 
+    total_prefix_count = sum(c for ng, c in counts.items() if ng[:-1] == prefix) 
     model [ngram] = count / total_prefix_count
-print("N-gram Probabilities:", dict(model))
+print("N-gram Probabilities:",dict(model))

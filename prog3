@@ -1,20 +1,19 @@
 from nltk import ngrams
-from collections import Counter, defaultdict
+from collections import Counter,defaultdict
 
-# Sample text
-text = "Natural language processing is fun and challenging."
+text = "Natural language is fun and challenging"
 
-# Generate N-grams
-N2              # Change to 3 for Trigrams, etc. 
-tokens = text.lower().split() 
-n_grams = list(ngrams(tokens, N))
+N = 2
+tokens = text.lower().split()
+n_grams = list(ngrams(tokens,N))
 
-# Calculate probabilities 
-model = defaultdict(lambda: 0)
+model = defaultdict(lambda:0)
+
 counts = Counter(n_grams)
 
-for ngram, count in counts.items():
-    prefix = ngram[:-1] 
-    total_prefix_count = sum(c for ng, c in counts.items() if ng[:-1] == prefix) 
-    model [ngram] = count / total_prefix_count
-print("N-gram Probabilities:",dict(model))
+for ngram,count in counts.items():
+    prefix = ngram[:1]
+    tpc = sum(c for ng,c in counts.items() if ng[:-1])
+    model[ngram] = count/tpc
+
+print("Ngram probabilities",dict(model))

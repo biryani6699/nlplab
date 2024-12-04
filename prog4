@@ -10,4 +10,4 @@ model = Word2Vec(sentences, vector_size=50, window=3, min_count=1, sg=1)
 
 # Get vector for a word
 vector = model.wv["language"]
-print("Word Vector for 'language':", vector)
+print("Word Vector for 'language':",vector)

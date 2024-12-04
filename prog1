@@ -5,17 +5,14 @@ from nltk import pos_tag
 
 
 nltk.download('punkt')
-
 nltk.download('averaged_perceptron_tagger')
-
 nltk.download('stopwords')
+
 
 text = "NLTk is a leading platform for building python programs to work with human language data."
 
 to_text = word_tokenize(text)
-
 st = set(stopwords.words('english'))
-
 st_token = [word for word in to_text if word.lower() not in st]
 
 postags = pos_tag(st_token)

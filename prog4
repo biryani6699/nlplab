@@ -1,13 +1,10 @@
 from gensim.models import Word2Vec
 
-# Sample sentences
-sentences = [["natural", "language", "processing", "is", "fun"],
-             ["machine", "learning", "and", "nlp", "go", "together"]]
+sentences = [['natural','language','is','fun'],
+             ['machine','learning','and','nlp','go','together']]
 
+model = Word2Vec(sentences,vector_size = 50,window = 3,min_count = 1,sg = 1)
 
-# Train Word2Vec model
-model = Word2Vec(sentences, vector_size=50, window=3, min_count=1, sg=1)
+vector = model.wv['language']
 
-# Get vector for a word
-vector = model.wv["language"]
-print("Word Vector for 'language':",vector)
+print("word vector for language",vector)

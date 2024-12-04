@@ -1,28 +1,24 @@
-import nltk 
-from nltk.corpus import stopwords 
+import nltk
 from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from nltk import pos_tag
 
-# Download required NLTK resources
 
-nltk.download('punkt_tab') 
-nltk.download('averaged_perceptron_tagger_eng') 
+nltk.download('punkt')
+
+nltk.download('averaged_perceptron_tagger')
+
 nltk.download('stopwords')
 
+text = "NLTk is a leading platform for building python programs to work with human language data."
 
-# Sample text
-text = "Natural Language Processing is a fascinating field of AI."
+to_text = word_tokenize(text)
 
+st = set(stopwords.words('english'))
 
-# Tokenize the text 
-tokens = word_tokenize(text)
+st_token = [word for word in to_text if word.lower() not in st]
 
-# Get stop words
-stop_words = set(stopwords.words('english'))        
+postags = pos_tag(st_token)
 
-# Filter tokens to include only stop words
-stop_word_tokens = [word for word in tokens if word.lower() in stop_words]          
-
-# Perform POS tagging
-pos_tags = nltk.pos_tag(stop_word_tokens)        
-
-print("POS Tags of Stop Words:", pos_tags)
+for word,tag in postags:
+    print(f'{word}:{tag}')

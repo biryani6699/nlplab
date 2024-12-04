@@ -1,14 +1,10 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-# Sample documents
-documents = ["Natural language processing is amazing.", 
-             "Machine learning and NLP go hand in hand.", 
-             "TF-IDF helps find important words in a document."]
+doc = ["Natural language processing is amazing","Machine learning and NLP go hand in hand","Tf-idf helps find important words in a document"]
 
-# Compute TF-IDF
-vectorizer = TfidfVectorizer()
-tfidf_matrix = vectorizer.fit_transform(documents)
+vec = TfidfVectorizer()
+mat = vec.fit_transform(doc)
 
-# Display results
-print("Feature Names:", vectorizer.get_feature_names_out())
-print("TF-IDF Matrix:\n", tfidf_matrix.toarray())
+print("Feature names",vec.get_feature_names_out())
+
+print(mat.toarray())
